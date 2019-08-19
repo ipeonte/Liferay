@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example.api-dispatcher.demo.lib</groupId>
+	<artifactId>country</artifactId>
+	<packaging>jar</packaging>
+
+	<name>CountryDemoLib</name>
+	<description>Demo library with Country Info lookup services</description>
+
+	<url>https://github.com/ipeonte/RestApiDispatcherDemo</url>
+
+	<developers>
+		<developer>
+			<name>Igor Peonte</name>
+			<email>igor.144@gmail.com</email>
+		</developer>
+	</developers>
+	
+	<parent>
+		<groupId>com.example.api-dispatcher.demo</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0-RELEASE</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<artifactId>hibernate-validator</artifactId>
+			<groupId>org.hibernate</groupId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+</project>

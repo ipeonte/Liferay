@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example.api-dispatcher.demo.portlet</groupId>
+	<artifactId>DemoRestApiPortlet</artifactId>
+	<packaging>war</packaging>
+	<name>DemoRestApiPortlet Portlet</name>
+	<description>Demo portlet with both REST API Dispatcher libraries</description>
+
+	<url>https://github.com/ipeonte/RestApiDispatcherDemo</url>
+
+	<developers>
+		<developer>
+			<name>Igor Peonte</name>
+			<email>igor.144@gmail.com</email>
+		</developer>
+	</developers>
+
+	<parent>
+		<groupId>com.example.api-dispatcher.demo</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0-RELEASE</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<properties>
+		<api-dispatcher.version>1.0.0-RELEASE</api-dispatcher.version>
+		<country-demo-lib.version>1.0.0-RELEASE</country-demo-lib.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.liferay.maven.plugins</groupId>
+				<artifactId>liferay-maven-plugin</artifactId>
+				<version>${liferay.maven.plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>build-css</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<autoDeployDir>${liferay.auto.deploy.dir}</autoDeployDir>
+					<appServerDeployDir>${liferay.app.server.deploy.dir}</appServerDeployDir>
+					<appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir>
+					<appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
+					<liferayVersion>${liferay.version}</liferayVersion>
+					<pluginType>portlet</pluginType>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>portal-service</artifactId>
+			<version>${liferay.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>util-bridges</artifactId>
+			<version>${liferay.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>util-taglib</artifactId>
+			<version>${liferay.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>util-java</artifactId>
+			<version>${liferay.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.portlet</groupId>
+			<artifactId>portlet-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<!-- <version>1.2</version> -->
+		</dependency>
+
+		<!-- SprigBoot Dependecies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc-portlet</artifactId>
+		</dependency>
+
+		<!-- Dependencies -->
+		<dependency>
+			<groupId>com.example.api-dispatcher.demo.lib</groupId>
+			<artifactId>country</artifactId>
+			<version>${country-demo-lib.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.example.api-dispatcher</groupId>
+			<artifactId>portlet-base</artifactId>
+			<version>${api-dispatcher.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.example.api-dispatcher</groupId>
+			<artifactId>portlet-file</artifactId>
+			<version>${api-dispatcher.version}</version>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>local-lr6</id>
+			<properties>
+				<liferay.version>6.2.5</liferay.version>
+				<liferay.maven.plugin.version>6.2.10.16</liferay.maven.plugin.version>
+				<liferay.auto.deploy.dir>${user.home}/apps/liferay6/deploy</liferay.auto.deploy.dir>
+				<liferay.app.server.deploy.dir>${user.home}/apps/liferay6/tomcat-7.0.62/webapps</liferay.app.server.deploy.dir>
+				<liferay.app.server.lib.global.dir>${user.home}/apps/liferay6/tomcat-7.0.62/lib/ext</liferay.app.server.lib.global.dir>
+				<liferay.app.server.portal.dir>${user.home}/apps/liferay6/tomcat-7.0.62/webapps/ROOT</liferay.app.server.portal.dir>
+			</properties>
+		</profile>
+	</profiles>
+</project>
